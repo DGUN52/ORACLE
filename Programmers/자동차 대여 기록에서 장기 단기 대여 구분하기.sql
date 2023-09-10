@@ -1,0 +1,12 @@
+SELECT 
+    HISTORY_ID
+    , CAR_ID
+    , TO_CHAR(START_DATE,'yyyy-mm-dd')
+    , TO_CHAR(END_DATE,'yyyy-mm-dd')
+    , CASE WHEN END_DATE - START_DATE+1 >= 30
+        THEN '장기 대여'
+        ELSE '단기 대여'
+        END
+FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY H
+WHERE START_DATE BETWEEN TO_DATE(20220901,'yyyymmdd') AND TO_DATE(20220930,'yyyymmdd')
+ORDER BY HISTORY_ID DESC
